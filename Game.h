@@ -1,6 +1,10 @@
 #ifndef SFML_TEST_GAME_H
 #define SFML_TEST_GAME_H
 
+#include <iostream>
+#include <vector>
+#include <ctime>
+
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
 #include <SFML/Window.hpp>
@@ -16,7 +20,15 @@ private:
     sf::VideoMode videoMode;
     sf::Event event;
 
-    sf::RectangleShape rectangleShape;
+    sf::Vector2i mousePosWindow;
+
+    int points;
+    float enemySpawnTimer;
+    float enemySpawnTimerMax;
+    int maxEnemies;
+
+    sf::RectangleShape enemy;
+    std::vector<sf::RectangleShape> enemies;
 
     void initVariables();
     void initWindow();
@@ -27,8 +39,14 @@ public:
 
     const bool isWindowOpen() const;
 
+    void spawnEnemy();
+
     void pollEvents();
+    void updateMousePositions();
     void update();
+    void updateEnemies();
+
+    void renderEnemies();
     void render();
 };
 
