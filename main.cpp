@@ -6,7 +6,7 @@ int main() {
 
     Game game;
 
-    while (game.isWindowOpen()) {
+    while (game.getIsWindowOpen() && !game.getIsGameEnded()) {
         game.update();
         game.render();
     }
